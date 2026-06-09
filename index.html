@@ -278,10 +278,132 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
   .az-col-left{border-right:none;border-bottom:1px solid var(--bd)}
   .pr-inner{grid-template-columns:1fr}
   .nav-links{display:none}
-  .wrap,.pr-inner,#hero,#video,#features,#pr-section .pr-inner,#azure,#how,#pricing,#cta{padding-left:24px;padding-right:24px}
+  .wrap,.pr-inner,#hero,#video,#pr-section .pr-inner,#azure,#how,#cta{padding-left:24px;padding-right:24px}
   .cta-box{padding:48px 28px}
   footer,#nav{padding-left:24px;padding-right:24px}
   .foot-inner{flex-direction:column;align-items:flex-start;gap:16px}
+}
+/* ─ PILLARS ─────────────────────── */
+#pillars{padding:90px 48px 60px;max-width:1200px;margin:0 auto}
+.pillars-intro{text-align:center;margin-bottom:56px}
+.pillars-intro .sec-title{max-width:760px;margin-left:auto;margin-right:auto}
+.pillars-intro .sec-sub{margin-left:auto;margin-right:auto}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pillar-card{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:36px 30px;position:relative;overflow:hidden;transition:all .25s}
+.pillar-card:hover{border-color:var(--bd2);transform:translateY(-3px)}
+.pillar-num{font-family:var(--mono);font-size:12px;color:var(--txt3);letter-spacing:1px;margin-bottom:18px}
+.pillar-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.pi-ember{background:var(--eglow);color:var(--ember)}
+.pi-purple{background:rgba(168,85,247,.14);color:#A855F7}
+.pi-azure{background:var(--aglow);color:var(--azure)}
+.pillar-title{font-size:22px;font-weight:700;letter-spacing:-.6px;color:var(--txt);margin-bottom:12px}
+.pillar-desc{font-size:14.5px;color:var(--txt2);line-height:1.7}
+
+/* ─ GET STARTED / YAML ─────────────────────── */
+#getstart{padding:80px 48px;max-width:1200px;margin:0 auto}
+.gs-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:stretch}
+.gs-pane{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.gs-pane-hdr{padding:14px 20px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.18)}
+.gs-pane-lbl{font-family:var(--mono);font-size:12px;color:var(--txt2)}
+.gs-pane-tag{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--ember);background:var(--eglow);padding:3px 9px;border-radius:5px}
+.yaml-body{padding:22px 24px;font-family:var(--mono);font-size:13px;line-height:1.85;color:var(--txt2);overflow-x:auto;flex:1}
+.yk{color:#7DD3FC}
+.yv{color:#FCD34D}
+.ys{color:var(--green)}
+.yc{color:var(--txt3);font-style:italic}
+.install-body{padding:24px;display:flex;flex-direction:column;gap:18px;flex:1}
+.install-intro{font-size:14px;color:var(--txt2);line-height:1.65}
+.install-tabs{display:flex;gap:6px;background:rgba(0,0,0,.22);border:1px solid var(--bd);border-radius:10px;padding:4px;width:fit-content}
+.install-tab{padding:6px 16px;font-size:12px;font-weight:600;color:var(--txt2);background:transparent;border:none;border-radius:7px;cursor:pointer;font-family:var(--sans);transition:all .15s}
+.install-tab.on{background:var(--bg3);color:var(--txt);box-shadow:0 1px 0 rgba(255,255,255,.04)}
+.install-cmd{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;color:var(--txt);display:flex;align-items:center;gap:10px;overflow-x:auto;white-space:nowrap}
+.install-cmd .ic-pre{color:var(--ember);flex-shrink:0}
+.install-portal{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg3);border:1px solid var(--bd);border-radius:10px}
+.install-portal-ico{width:34px;height:34px;border-radius:8px;background:var(--eglow);color:var(--ember);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.install-portal-text{flex:1;font-size:13px;color:var(--txt2);line-height:1.5}
+.install-portal-text strong{color:var(--txt);font-weight:600}
+.install-portal-link{color:var(--ember);text-decoration:none;font-size:13px;font-weight:600}
+.install-portal-link:hover{color:var(--ember2)}
+
+/* ─ FGRID (full feature grid) ─────────────────────── */
+#fgrid{padding:80px 48px;max-width:1200px;margin:0 auto}
+.fgrid-intro{text-align:center;margin-bottom:48px}
+.fgrid-intro .sec-sub{margin-left:auto;margin-right:auto}
+.fgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.fgrid-card{background:var(--bg2);border:1px solid var(--bd);border-radius:13px;padding:22px 18px;transition:all .2s}
+.fgrid-card:hover{border-color:var(--bd2);background:var(--bg3)}
+.fg-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:14px;background:var(--eglow);color:var(--ember)}
+.fgrid-card:nth-child(5n+2) .fg-ico{background:var(--aglow);color:var(--azure)}
+.fgrid-card:nth-child(5n+3) .fg-ico{background:rgba(168,85,247,.14);color:#A855F7}
+.fgrid-card:nth-child(5n+4) .fg-ico{background:var(--gglow);color:var(--green)}
+.fgrid-card:nth-child(5n+5) .fg-ico{background:rgba(234,179,8,.14);color:var(--yellow)}
+.fg-name{font-size:14px;font-weight:600;color:var(--txt);margin-bottom:6px;letter-spacing:-.2px}
+.fg-desc{font-size:12.5px;color:var(--txt2);line-height:1.55}
+
+/* ─ AI / COPILOT ─────────────────────── */
+#ai{padding:90px 48px;max-width:1200px;margin:0 auto}
+.ai-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.ai-copy .eyebrow{color:#A855F7}
+.ai-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.25);color:#C084FC;font-size:12px;font-weight:600;padding:6px 12px;border-radius:100px;margin-bottom:20px;font-family:var(--mono);letter-spacing:.3px}
+.ai-pill-dot{width:6px;height:6px;border-radius:50%;background:#A855F7;box-shadow:0 0 10px #A855F7}
+.ai-bullets{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px}
+.ai-bullet{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--txt2);line-height:1.6}
+.ai-bullet-ico{flex-shrink:0;width:22px;height:22px;border-radius:6px;background:rgba(168,85,247,.14);color:#C084FC;display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:1px}
+.ai-chat{background:var(--bg2);border:1px solid var(--bd2);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(168,85,247,.06)}
+.ai-chat-hdr{padding:14px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.18)}
+.ai-chat-ico{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#A855F7,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:12px}
+.ai-chat-name{font-size:13px;font-weight:600;color:var(--txt)}
+.ai-chat-sub{font-size:11px;color:var(--txt3);margin-left:auto;font-family:var(--mono)}
+.ai-chat-body{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.ai-msg{display:flex;gap:11px;align-items:flex-start}
+.ai-avatar{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.ai-avatar-u{background:rgba(255,255,255,.06);color:var(--txt)}
+.ai-avatar-c{background:linear-gradient(135deg,#A855F7,#3B82F6);color:#fff}
+.ai-bubble{flex:1;font-size:13.5px;color:var(--txt);line-height:1.65}
+.ai-bubble code{font-family:var(--mono);font-size:12px;background:rgba(168,85,247,.1);color:#C084FC;padding:1px 7px;border-radius:5px}
+.ai-bubble .ai-line{display:block;color:var(--txt2);font-family:var(--mono);font-size:12px;padding:2px 0}
+.ai-bubble .ai-line .vt-ok{color:var(--green)}
+
+/* ─ VS COMPARISON ─────────────────────── */
+#vs{padding:80px 48px;max-width:1200px;margin:0 auto}
+.vs-intro{text-align:center;margin-bottom:48px}
+.vs-intro .sec-sub{margin-left:auto;margin-right:auto}
+.vs-table{background:var(--bg2);border:1px solid var(--bd2);border-radius:18px;overflow:hidden}
+.vs-row{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;align-items:center}
+.vs-row+.vs-row{border-top:1px solid var(--bd)}
+.vs-cell{padding:18px 22px;font-size:14px;color:var(--txt2);display:flex;align-items:center;gap:8px}
+.vs-cell-feat{color:var(--txt);font-weight:500}
+.vs-head{background:rgba(0,0,0,.22)}
+.vs-head .vs-cell{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--txt3);padding-top:16px;padding-bottom:16px}
+.vs-head .vs-cell.vs-embr{color:var(--ember)}
+.vs-yes{color:var(--green);font-weight:700}
+.vs-no{color:var(--txt3)}
+.vs-partial{color:var(--yellow)}
+.vs-col-embr{background:rgba(255,87,34,.04)}
+
+/* ─ TEMPLATES ─────────────────────── */
+#tpls{padding:80px 48px;max-width:1200px;margin:0 auto}
+.tpls-intro{text-align:center;margin-bottom:48px}
+.tpls-intro .sec-sub{margin-left:auto;margin-right:auto}
+.tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tpl-card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:24px;display:flex;flex-direction:column;transition:all .2s;text-decoration:none}
+.tpl-card:hover{border-color:var(--bd2);transform:translateY(-2px)}
+.tpl-stack{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.tpl-chip{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--txt2);background:var(--bg3);border:1px solid var(--bd);padding:3px 8px;border-radius:5px;letter-spacing:.2px}
+.tpl-name{font-size:16px;font-weight:700;color:var(--txt);letter-spacing:-.3px;margin-bottom:6px}
+.tpl-desc{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:18px;flex:1}
+.tpl-cta{font-size:12px;color:var(--ember);font-weight:600;font-family:var(--mono);display:flex;align-items:center;gap:6px}
+
+/* ─ EXTRA RESPONSIVE ─────────────────────── */
+@media(max-width:1024px){
+  .pillars-grid,.gs-grid,.ai-grid,.tpl-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:repeat(2,1fr)}
+  .vs-row{grid-template-columns:1.2fr .7fr .7fr .7fr}
+  .vs-cell{padding:14px 14px;font-size:13px}
+  #pillars,#getstart,#fgrid,#ai,#vs,#tpls{padding-left:24px;padding-right:24px}
+}
+@media(max-width:600px){
+  .fgrid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -293,9 +415,10 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
 <nav id="nav">
   <a href="#" class="nav-logo"><span class="logo-dot"></span> embr</a>
   <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#pillars">Why embr</a></li>
+    <li><a href="#fgrid">Features</a></li>
+    <li><a href="#ai">Copilot</a></li>
+    <li><a href="#tpls">Templates</a></li>
     <li><a href="#">Docs</a></li>
   </ul>
   <div class="nav-actions">
@@ -316,7 +439,8 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
     </div>
     <div class="hero-proof">
       <div class="proof-item"><span class="proof-dot"></span> No credit card</div>
-      <div class="proof-item"><span class="proof-dot"></span> Instant setup</div>
+      <div class="proof-item"><span class="proof-dot"></span> One config file</div>
+      <div class="proof-item"><span class="proof-dot"></span> Built for solo devs</div>
     </div>
   </div>
 
@@ -374,37 +498,88 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
   </div>
 </section>
 
-<!-- AZURE -->
-<section id="azure">
-  <div class="az-top reveal">
-    <p class="eyebrow">The growth path</p>
-    <h2 class="sec-title">Start indie.<br>Scale enterprise.</h2>
-    <p class="sec-sub">embr is designed to grow with you. When your project needs real Azure infrastructure, your services map directly — no migration headaches, no vendor lock-in.</p>
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="pillars-intro reveal">
+    <p class="eyebrow">Why embr</p>
+    <h2 class="sec-title">Three things nobody else does together.</h2>
+    <p class="sec-sub">Vercel and Railway are great. embr is built for what comes next: real isolation, real backends, and an AI that can actually ship code.</p>
   </div>
-  <div class="az-card reveal">
-    <div class="az-col az-col-left">
-      <p class="az-lbl az-lbl-ember">On embr</p>
-      <h3 class="az-col-title">Built for indie builders</h3>
-      <p class="az-col-desc">Zero config. Instant environments. Everything a solo dev needs to ship without thinking about infrastructure.</p>
-      <div class="svc-list">
-        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Environments</span><span class="svc-desc">embr managed</span></div>
-        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Object storage</span><span class="svc-desc">embr storage</span></div>
-        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">PostgreSQL</span><span class="svc-desc">embr database</span></div>
-        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Custom domains</span><span class="svc-desc">SSL included</span></div>
+  <div class="pillars-grid">
+    <div class="pillar-card reveal reveal-d1">
+      <div class="pillar-num">01</div>
+      <div class="pillar-ico pi-ember">⚡</div>
+      <div class="pillar-title">MicroVMs, not shared containers.</div>
+      <p class="pillar-desc">Per-app isolation. Sub-second cold starts. No noisy neighbors stealing your CPU when somebody else's cron job fires.</p>
+    </div>
+    <div class="pillar-card reveal reveal-d2">
+      <div class="pillar-num">02</div>
+      <div class="pillar-ico pi-purple">🔋</div>
+      <div class="pillar-title">Backends with batteries.</div>
+      <p class="pillar-desc">Postgres, Valkey cache, blob storage, healthchecks. Declared in one <code style="font-family:var(--mono);font-size:12px;color:#C084FC">embr.yaml</code>. Provisioned for you.</p>
+    </div>
+    <div class="pillar-card reveal reveal-d3">
+      <div class="pillar-num">03</div>
+      <div class="pillar-ico pi-azure">🤖</div>
+      <div class="pillar-title">AI-native by default.</div>
+      <p class="pillar-desc">First-class GitHub Copilot skills. Your AI agent can deploy, stream logs, and shell into a running instance — no glue code.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GET STARTED / YAML -->
+<section id="getstart">
+  <div class="pillars-intro reveal">
+    <p class="eyebrow">Get started</p>
+    <h2 class="sec-title">One file. One command.<br>Then push.</h2>
+    <p class="sec-sub">Drop an <code style="font-family:var(--mono);font-size:0.85em;color:var(--ember)">embr.yaml</code> in your repo, install the CLI, and ship. Or skip the CLI entirely and use the portal.</p>
+  </div>
+  <div class="gs-grid">
+    <div class="gs-pane reveal reveal-d1">
+      <div class="gs-pane-hdr">
+        <span class="gs-pane-lbl">embr.yaml</span>
+        <span class="gs-pane-tag">Config</span>
       </div>
+      <pre class="yaml-body"><span class="yc"># Your whole stack in one file</span>
+<span class="yk">name</span><span class="yv">:</span> <span class="ys">myapp</span>
+<span class="yk">runtime</span><span class="yv">:</span> <span class="ys">node-20</span>
+
+<span class="yk">build</span><span class="yv">:</span>
+  <span class="yk">command</span><span class="yv">:</span> <span class="ys">npm run build</span>
+<span class="yk">start</span><span class="yv">:</span>
+  <span class="yk">command</span><span class="yv">:</span> <span class="ys">npm start</span>
+  <span class="yk">port</span><span class="yv">:</span> <span class="ys">3000</span>
+
+<span class="yk">services</span><span class="yv">:</span>
+  <span class="yk">db</span><span class="yv">:</span>
+    <span class="yk">type</span><span class="yv">:</span> <span class="ys">postgres</span>
+  <span class="yk">cache</span><span class="yv">:</span>
+    <span class="yk">type</span><span class="yv">:</span> <span class="ys">valkey</span>
+  <span class="yk">uploads</span><span class="yv">:</span>
+    <span class="yk">type</span><span class="yv">:</span> <span class="ys">blob</span>
+
+<span class="yk">healthcheck</span><span class="yv">:</span> <span class="ys">/healthz</span></pre>
     </div>
-    <div class="az-mid">
-      <div class="az-arrow">→</div>
-    </div>
-    <div class="az-col">
-      <p class="az-lbl az-lbl-azure">On Azure</p>
-      <h3 class="az-col-title">Enterprise-ready infra</h3>
-      <p class="az-col-desc">When the project grows into a product, migrate each service to its Azure equivalent — one at a time, at your pace.</p>
-      <div class="svc-list">
-        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Container Apps</span><span class="svc-desc">Azure managed</span></div>
-        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Blob Storage</span><span class="svc-desc">Azure Storage</span></div>
-        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Azure Database</span><span class="svc-desc">for PostgreSQL</span></div>
-        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Azure DNS</span><span class="svc-desc">+ Front Door</span></div>
+    <div class="gs-pane reveal reveal-d2">
+      <div class="gs-pane-hdr">
+        <span class="gs-pane-lbl">Install</span>
+        <span class="gs-pane-tag" style="background:var(--aglow);color:var(--azure)">CLI + Portal</span>
+      </div>
+      <div class="install-body">
+        <div class="install-portal">
+          <div class="install-portal-ico">🌐</div>
+          <div class="install-portal-text"><strong>No install?</strong> Open the portal, connect GitHub, deploy in the browser.</div>
+          <a href="https://portal.embr.azure" class="install-portal-link">Open portal →</a>
+        </div>
+        <div class="install-tabs" id="installTabs">
+          <button class="install-tab on" data-os="mac">macOS</button>
+          <button class="install-tab" data-os="win">Windows</button>
+          <button class="install-tab" data-os="linux">Linux</button>
+        </div>
+        <div class="install-cmd" id="installCmd"><span class="ic-pre">$</span> <span id="installCmdText">brew install embr/tap/embr</span></div>
+        <p class="install-intro" style="font-size:13px;color:var(--txt3);margin-top:4px">Then, in your repo:</p>
+        <div class="install-cmd"><span class="ic-pre">$</span> embr deploy</div>
+        <p class="install-intro" style="font-size:12.5px;color:var(--txt3);margin-top:auto;padding-top:4px;border-top:1px dashed var(--bd)">Works with GitHub repos and local repos. GitLab and Bitbucket coming soon.</p>
       </div>
     </div>
   </div>
@@ -435,32 +610,6 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
         </div>
         <span class="video-cap">Watch the 2-minute demo</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features">
-  <div class="feat-intro reveal">
-    <p class="eyebrow">What you get</p>
-    <h2 class="sec-title">Real environments.<br>Not just previews.</h2>
-    <p class="sec-sub">embr doesn't just render a static screenshot — it spins up a fully isolated, production-equivalent stack for every branch you push.</p>
-  </div>
-  <div class="feat-grid">
-    <div class="feat-card reveal reveal-d1">
-      <div class="feat-ico ico-ember">🔥</div>
-      <div class="feat-title">Production environments</div>
-      <p class="feat-desc">Your main branch gets a persistent, production-grade environment from day one. Real infra, real performance.</p>
-    </div>
-    <div class="feat-card reveal reveal-d2">
-      <div class="feat-ico ico-purple">⚡</div>
-      <div class="feat-title">PR preview environments</div>
-      <p class="feat-desc">Open a PR, get a URL. Every branch gets its own fully isolated environment that spins up in seconds and tears down on merge.</p>
-    </div>
-    <div class="feat-card reveal reveal-d3">
-      <div class="feat-ico ico-azure">☁️</div>
-      <div class="feat-title">Azure when you're ready</div>
-      <p class="feat-desc">When you outgrow embr, your services map directly to Azure equivalents. No rewrite, no painful migration — just a clean handoff.</p>
     </div>
   </div>
 </section>
@@ -538,6 +687,206 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
   </div>
 </section>
 
+<!-- FEATURE GRID -->
+<section id="fgrid">
+  <div class="fgrid-intro reveal">
+    <p class="eyebrow">Everything in the box</p>
+    <h2 class="sec-title">A real platform.<br>Not a deploy script.</h2>
+    <p class="sec-sub">Every piece you'd cobble together from five vendors — environments, databases, cache, storage, secrets, logs, shell — declared in one file.</p>
+  </div>
+  <div class="fgrid">
+    <div class="fgrid-card reveal reveal-d1"><div class="fg-ico">🌱</div><div class="fg-name">Environments</div><div class="fg-desc">Prod, staging, and a fresh preview for every branch.</div></div>
+    <div class="fgrid-card reveal reveal-d1"><div class="fg-ico">↻</div><div class="fg-name">Auto-deploy on push</div><div class="fg-desc">Push to a branch, get a URL. No pipeline YAML.</div></div>
+    <div class="fgrid-card reveal reveal-d1"><div class="fg-ico">🐘</div><div class="fg-name">Managed Postgres</div><div class="fg-desc">Branching included. Fork your DB with your code.</div></div>
+    <div class="fgrid-card reveal reveal-d1"><div class="fg-ico">⚡</div><div class="fg-name">Valkey cache</div><div class="fg-desc">Redis-compatible cache, embedded per environment.</div></div>
+    <div class="fgrid-card reveal reveal-d1"><div class="fg-ico">📦</div><div class="fg-name">Blob storage</div><div class="fg-desc">S3-style object store with a simple upload API.</div></div>
+    <div class="fgrid-card reveal reveal-d2"><div class="fg-ico">⌨️</div><div class="fg-name">embr shell</div><div class="fg-desc">SSH into any running instance. Debug live, safely.</div></div>
+    <div class="fgrid-card reveal reveal-d2"><div class="fg-ico">📜</div><div class="fg-name">Real-time logs</div><div class="fg-desc">Stream stdout/stderr across replicas with one command.</div></div>
+    <div class="fgrid-card reveal reveal-d2"><div class="fg-ico">❤️</div><div class="fg-name">Health checks</div><div class="fg-desc">Declare a probe. embr auto-restores unhealthy instances.</div></div>
+    <div class="fgrid-card reveal reveal-d2"><div class="fg-ico">⇅</div><div class="fg-name">Scale up &amp; down</div><div class="fg-desc">Resize VMs or replicas without rebuilding.</div></div>
+    <div class="fgrid-card reveal reveal-d2"><div class="fg-ico">🔐</div><div class="fg-name">Secrets &amp; env vars</div><div class="fg-desc">Per-environment overrides, encrypted at rest.</div></div>
+  </div>
+</section>
+
+<!-- AI / COPILOT -->
+<section id="ai">
+  <div class="ai-grid">
+    <div class="ai-copy reveal">
+      <p class="eyebrow">AI-native</p>
+      <span class="ai-pill"><span class="ai-pill-dot"></span> GitHub Copilot skill</span>
+      <h2 class="sec-title">Your AI agent<br>ships the code.</h2>
+      <p class="sec-sub">embr is the first deploy platform with a first-class Copilot skill. Your agent doesn't just write code — it deploys, tails logs, and shells in when something breaks.</p>
+      <ul class="ai-bullets">
+        <li class="ai-bullet"><span class="ai-bullet-ico">✓</span><span>One command to install: <code style="font-family:var(--mono);font-size:12px;color:#C084FC">embr setup skills</code></span></li>
+        <li class="ai-bullet"><span class="ai-bullet-ico">✓</span><span>Copilot can deploy your repo, stream logs, and shell into instances</span></li>
+        <li class="ai-bullet"><span class="ai-bullet-ico">✓</span><span>Works in VS Code, the Copilot CLI, and GitHub.com</span></li>
+        <li class="ai-bullet"><span class="ai-bullet-ico">✓</span><span>Scoped permissions per-repo so your agent stays in its lane</span></li>
+      </ul>
+    </div>
+    <div class="ai-chat reveal reveal-d2">
+      <div class="ai-chat-hdr">
+        <div class="ai-chat-ico">✨</div>
+        <div class="ai-chat-name">GitHub Copilot</div>
+        <span class="ai-chat-sub">myapp · main</span>
+      </div>
+      <div class="ai-chat-body">
+        <div class="ai-msg">
+          <div class="ai-avatar ai-avatar-u">U</div>
+          <div class="ai-bubble">Deploy the latest commit and tail the logs until the healthcheck passes.</div>
+        </div>
+        <div class="ai-msg">
+          <div class="ai-avatar ai-avatar-c">✦</div>
+          <div class="ai-bubble">
+            Deploying <code>myapp</code> to production…
+            <span class="ai-line"><span class="vt-ok">✓</span> Built image (12s)</span>
+            <span class="ai-line"><span class="vt-ok">✓</span> Migrated Postgres (2 changes)</span>
+            <span class="ai-line"><span class="vt-ok">✓</span> Rolled new revision · 2 / 2 healthy</span>
+            <span class="ai-line"><span class="vt-ok">✓</span> Live at https://myapp.embr.dev</span>
+          </div>
+        </div>
+        <div class="ai-msg">
+          <div class="ai-avatar ai-avatar-u">U</div>
+          <div class="ai-bubble">A user is hitting 502s. Shell in and grep for "ECONNRESET".</div>
+        </div>
+        <div class="ai-msg">
+          <div class="ai-avatar ai-avatar-c">✦</div>
+          <div class="ai-bubble">Opening <code>embr shell</code> on revision 47… Found 3 matches in the last 5 minutes. The Valkey pool is exhausting — want me to bump <code>cache.max_connections</code> and redeploy?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AZURE -->
+<section id="azure">
+  <div class="az-top reveal">
+    <p class="eyebrow">The growth path</p>
+    <h2 class="sec-title">Start indie.<br>Scale enterprise.</h2>
+    <p class="sec-sub">embr is designed to grow with you. When your project needs real Azure infrastructure, your services map directly — no migration headaches, no vendor lock-in.</p>
+  </div>
+  <div class="az-card reveal">
+    <div class="az-col az-col-left">
+      <p class="az-lbl az-lbl-ember">On embr</p>
+      <h3 class="az-col-title">Built for solo builders</h3>
+      <p class="az-col-desc">Declare your stack in one <code style="font-family:var(--mono);font-size:0.85em">embr.yaml</code>. Get production + previews + managed backends. Everything a solo dev needs without thinking about infrastructure.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Environments</span><span class="svc-desc">embr managed</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Object storage</span><span class="svc-desc">embr storage</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">PostgreSQL</span><span class="svc-desc">embr database</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Custom domains</span><span class="svc-desc">SSL included</span></div>
+      </div>
+    </div>
+    <div class="az-mid">
+      <div class="az-arrow">→</div>
+    </div>
+    <div class="az-col">
+      <p class="az-lbl az-lbl-azure">On Azure</p>
+      <h3 class="az-col-title">Enterprise-ready infra</h3>
+      <p class="az-col-desc">When the project grows into a product, migrate each service to its Azure equivalent — one at a time, at your pace.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Container Apps</span><span class="svc-desc">Azure managed</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Blob Storage</span><span class="svc-desc">Azure Storage</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Azure Database</span><span class="svc-desc">for PostgreSQL</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Azure DNS</span><span class="svc-desc">+ Front Door</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VS COMPARISON -->
+<section id="vs">
+  <div class="vs-intro reveal">
+    <p class="eyebrow">vs. the alternatives</p>
+    <h2 class="sec-title">How we stack up.</h2>
+    <p class="sec-sub">Vercel is great for frontends. Railway is great for hobby backends. embr is built for the solo dev shipping a real product — with the path to scale baked in.</p>
+  </div>
+  <div class="vs-table reveal">
+    <div class="vs-row vs-head">
+      <div class="vs-cell">Feature</div>
+      <div class="vs-cell vs-embr">embr</div>
+      <div class="vs-cell">Vercel</div>
+      <div class="vs-cell">Railway</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-feat">MicroVM isolation per app</div>
+      <div class="vs-cell vs-col-embr"><span class="vs-yes">✓ Yes</span></div>
+      <div class="vs-cell"><span class="vs-no">Shared functions</span></div>
+      <div class="vs-cell"><span class="vs-no">Shared containers</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-feat">Ephemeral PR environments</div>
+      <div class="vs-cell vs-col-embr"><span class="vs-yes">✓ Full stack</span></div>
+      <div class="vs-cell"><span class="vs-partial">Frontend only</span></div>
+      <div class="vs-cell"><span class="vs-partial">Manual</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-feat">Managed Postgres + cache + blob</div>
+      <div class="vs-cell vs-col-embr"><span class="vs-yes">✓ One file</span></div>
+      <div class="vs-cell"><span class="vs-no">BYO / partners</span></div>
+      <div class="vs-cell"><span class="vs-partial">Postgres only</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-feat">Shell into running instances</div>
+      <div class="vs-cell vs-col-embr"><span class="vs-yes">✓ Yes</span></div>
+      <div class="vs-cell"><span class="vs-no">No</span></div>
+      <div class="vs-cell"><span class="vs-no">No</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-feat">First-class Copilot skill</div>
+      <div class="vs-cell vs-col-embr"><span class="vs-yes">✓ Built-in</span></div>
+      <div class="vs-cell"><span class="vs-no">No</span></div>
+      <div class="vs-cell"><span class="vs-no">No</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-feat">Migrate to your own cloud</div>
+      <div class="vs-cell vs-col-embr"><span class="vs-yes">✓ Azure handoff</span></div>
+      <div class="vs-cell"><span class="vs-no">Locked in</span></div>
+      <div class="vs-cell"><span class="vs-no">Locked in</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section id="tpls">
+  <div class="tpls-intro reveal">
+    <p class="eyebrow">Templates</p>
+    <h2 class="sec-title">Skip the boilerplate.<br>Deploy a working stack.</h2>
+    <p class="sec-sub">Pre-wired starters with <code style="font-family:var(--mono);font-size:0.85em;color:var(--ember)">embr.yaml</code>, services, and a working app. Clone, push, ship.</p>
+  </div>
+  <div class="tpl-grid">
+    <a href="#" class="tpl-card reveal reveal-d1">
+      <div class="tpl-stack">
+        <span class="tpl-chip">Next.js</span>
+        <span class="tpl-chip">Postgres</span>
+        <span class="tpl-chip">Blob</span>
+      </div>
+      <div class="tpl-name">SaaS starter</div>
+      <p class="tpl-desc">Auth, billing, file uploads, and a Postgres schema. Everything a solo SaaS needs day one.</p>
+      <span class="tpl-cta">Deploy template →</span>
+    </a>
+    <a href="#" class="tpl-card reveal reveal-d2">
+      <div class="tpl-stack">
+        <span class="tpl-chip">FastAPI</span>
+        <span class="tpl-chip">Postgres</span>
+        <span class="tpl-chip">Valkey</span>
+      </div>
+      <div class="tpl-name">Python API</div>
+      <p class="tpl-desc">FastAPI with Postgres for data and Valkey for caching. Healthcheck + migrations wired in.</p>
+      <span class="tpl-cta">Deploy template →</span>
+    </a>
+    <a href="#" class="tpl-card reveal reveal-d3">
+      <div class="tpl-stack">
+        <span class="tpl-chip">Node</span>
+        <span class="tpl-chip">Worker</span>
+        <span class="tpl-chip">Valkey</span>
+      </div>
+      <div class="tpl-name">Background worker</div>
+      <p class="tpl-desc">A web service + a queue-driven worker reading from Valkey. Scale them independently.</p>
+      <span class="tpl-cta">Deploy template →</span>
+    </a>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="how-intro reveal">
@@ -550,7 +899,7 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
     <div class="how-step reveal reveal-d1">
       <div class="how-num">01</div>
       <div class="how-step-title">Connect your repo</div>
-      <p class="how-step-desc">Authorize embr on your Git provider. Select the repo you want to deploy. That's the whole setup.</p>
+      <p class="how-step-desc">Authorize embr on GitHub, or point it at a local repo. Pick the project you want to deploy. That's the whole setup.</p>
       <span class="how-step-code">embr connect</span>
     </div>
     <div class="how-step reveal reveal-d2">
@@ -564,62 +913,6 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
       <div class="how-step-title">Share the link</div>
       <p class="how-step-desc">Every environment gets a unique URL. Comment it in your PR, share it with stakeholders, or test it yourself — it's always live.</p>
       <span class="how-step-code" style="color:var(--azure)">pr-47.myapp.embr.dev</span>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="price-intro reveal">
-    <p class="eyebrow">Pricing</p>
-    <h2 class="sec-title">Start free.<br>Scale as you ship.</h2>
-    <p class="sec-sub">No surprise bills. No per-seat pricing. Pay for what your project actually needs.</p>
-  </div>
-  <div class="price-grid">
-    <div class="price-card reveal reveal-d1">
-      <p class="price-tier-lbl">Spark</p>
-      <div class="price-amount"><sup></sup>Free</div>
-      <p class="price-tagline">Everything you need to start building. No credit card, no time limit.</p>
-      <div class="price-divider"></div>
-      <ul class="price-features">
-        <li class="pf-item"><span class="pf-check">✓</span> 1 production environment</li>
-        <li class="pf-item"><span class="pf-check">✓</span> Up to 3 PR preview environments</li>
-        <li class="pf-item"><span class="pf-check">✓</span> 10GB storage</li>
-        <li class="pf-item"><span class="pf-check">✓</span> PostgreSQL database</li>
-        <li class="pf-item"><span class="pf-check">✓</span> embr.dev subdomain</li>
-      </ul>
-      <a href="#" class="btn btn-ghost" style="width:100%;justify-content:center">Get started free</a>
-    </div>
-    <div class="price-card featured reveal reveal-d2">
-      <span class="price-pop">Most popular</span>
-      <p class="price-tier-lbl">Blaze</p>
-      <div class="price-amount"><sup>$</sup>19<sub>/mo</sub></div>
-      <p class="price-tagline">For indie devs who push code every day and need unlimited previews.</p>
-      <div class="price-divider"></div>
-      <ul class="price-features">
-        <li class="pf-item"><span class="pf-check">✓</span> 3 production environments</li>
-        <li class="pf-item"><span class="pf-check">✓</span> Unlimited PR preview environments</li>
-        <li class="pf-item"><span class="pf-check">✓</span> 100GB storage</li>
-        <li class="pf-item"><span class="pf-check">✓</span> Custom domains + SSL</li>
-        <li class="pf-item"><span class="pf-check">✓</span> Environment variables &amp; secrets</li>
-        <li class="pf-item"><span class="pf-check">✓</span> Priority support</li>
-      </ul>
-      <a href="#" class="btn btn-primary" style="width:100%;justify-content:center">Start with Blaze →</a>
-    </div>
-    <div class="price-card reveal reveal-d3">
-      <p class="price-tier-lbl">Forge</p>
-      <div class="price-amount" style="font-size:32px;letter-spacing:-1px;padding-top:4px">Azure pricing</div>
-      <p class="price-tagline">When you're ready to move to real Azure infrastructure. We migrate you there.</p>
-      <div class="price-divider"></div>
-      <ul class="price-features">
-        <li class="pf-item"><span class="pf-check">✓</span> Everything in Blaze</li>
-        <li class="pf-item"><span class="pf-check">✓</span> Azure Container Apps migration</li>
-        <li class="pf-item"><span class="pf-check">✓</span> Azure Blob + Database handoff</li>
-        <li class="pf-item"><span class="pf-check">✓</span> Guided migration support</li>
-        <li class="pf-item"><span class="pf-check">✓</span> You pay Azure directly</li>
-        <li class="pf-item"><span class="pf-check">✓</span> No embr lock-in</li>
-      </ul>
-      <a href="#" class="btn btn-ghost" style="width:100%;justify-content:center">Talk to us</a>
     </div>
   </div>
 </section>
@@ -644,7 +937,7 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
     <a href="#" class="foot-logo"><span class="foot-logo-dot"></span> embr</a>
     <ul class="foot-links">
       <li><a href="#">Docs</a></li>
-      <li><a href="#">Pricing</a></li>
+      <li><a href="#tpls">Templates</a></li>
       <li><a href="#">Blog</a></li>
       <li><a href="#">Twitter / X</a></li>
       <li><a href="#">Privacy</a></li>
@@ -705,6 +998,22 @@ function runBuildAnimation() {
   }, 3000);
 }
 setTimeout(runBuildAnimation, 3200);
+
+// Install command OS tabs
+const installCmds = {
+  mac: 'brew install embr/tap/embr',
+  win: 'iwr https://embr.dev/install.ps1 | iex',
+  linux: 'curl -fsSL https://embr.dev/install.sh | sh'
+};
+const installTabs = document.querySelectorAll('#installTabs .install-tab');
+const installCmdText = document.getElementById('installCmdText');
+installTabs.forEach(t => {
+  t.addEventListener('click', () => {
+    installTabs.forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    installCmdText.textContent = installCmds[t.dataset.os];
+  });
+});
 </script>
 </body>
 </html>
