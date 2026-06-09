@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>embr — Every PR. A live environment.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07080C;
+  --bg2: #0C0E16;
+  --bg3: #111521;
+  --bd: rgba(255,255,255,0.07);
+  --bd2: rgba(255,255,255,0.11);
+  --ember: #FF5722;
+  --ember2: #FF7D52;
+  --eglow: rgba(255,87,34,0.14);
+  --azure: #3B82F6;
+  --aglow: rgba(59,130,246,0.14);
+  --green: #22C55E;
+  --gglow: rgba(34,197,94,0.1);
+  --yellow: #EAB308;
+  --txt: #EDE9E3;
+  --txt2: #9896A2;
+  --txt3: #4E4B58;
+  --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ─ UTILS ─────────────────────── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ember);margin-bottom:14px}
+.sec-title{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1.8px;line-height:1.05;color:var(--txt);margin-bottom:18px}
+.sec-sub{font-size:17px;color:var(--txt2);line-height:1.75;max-width:520px}
+
+/* ─ BUTTONS ─────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:9px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;transition:all .2s;border:none;font-family:var(--sans);letter-spacing:-.2px}
+.btn-primary{background:var(--ember);color:#fff}
+.btn-primary:hover{background:var(--ember2);transform:translateY(-1px);box-shadow:0 8px 30px rgba(255,87,34,.4)}
+.btn-ghost{background:rgba(255,255,255,.04);color:var(--txt);border:1px solid var(--bd2)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+.btn-lg{padding:14px 28px;font-size:15px;border-radius:11px}
+.btn-xl{padding:16px 36px;font-size:16px;border-radius:12px}
+
+/* ─ NAV ─────────────────────── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+#nav.scrolled{background:rgba(7,8,12,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
+.nav-logo{font-size:20px;font-weight:800;color:var(--txt);text-decoration:none;letter-spacing:-1px;display:flex;align-items:center;gap:8px}
+.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--ember);box-shadow:0 0 14px var(--ember),0 0 28px rgba(255,87,34,.3)}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{color:var(--txt2);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--txt)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+
+/* ─ HERO ─────────────────────── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;max-width:1200px;margin:0 auto;gap:64px;position:relative}
+.hero-glow{position:fixed;top:-180px;left:50%;transform:translateX(-50%);width:1000px;height:700px;background:radial-gradient(ellipse,rgba(255,87,34,.07) 0%,transparent 62%);pointer-events:none;z-index:0}
+.hero-left{flex:1;min-width:0;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;background:rgba(255,87,34,.07);border:1px solid rgba(255,87,34,.2);border-radius:100px;font-size:12px;color:var(--ember2);font-weight:500;margin-bottom:28px}
+.badge-dot{width:6px;height:6px;background:var(--ember);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,.6)}50%{box-shadow:0 0 0 5px rgba(255,87,34,0)}}
+h1{font-size:clamp(42px,5.5vw,74px);font-weight:800;letter-spacing:-3px;line-height:1.02;color:var(--txt);margin-bottom:22px}
+h1 .grad{background:linear-gradient(135deg,var(--ember) 0%,var(--ember2) 55%,#FFAA80 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:18px;color:var(--txt2);max-width:460px;line-height:1.72;margin-bottom:36px}
+.hero-actions{display:flex;align-items:center;gap:12px;margin-bottom:48px;flex-wrap:wrap}
+.hero-proof{display:flex;align-items:center;gap:24px;font-size:13px;color:var(--txt3)}
+.proof-item{display:flex;align-items:center;gap:6px}
+.proof-dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
+
+/* ─ ENV PANEL ─────────────────────── */
+.hero-right{flex:0 0 520px;position:relative;z-index:1}
+.env-panel{background:var(--bg2);border:1px solid var(--bd2);border-radius:16px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05)}
+.panel-glow{height:2px;background:linear-gradient(90deg,transparent 0%,var(--ember) 40%,transparent 100%);opacity:.45}
+.panel-header{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--bd);background:var(--bg3)}
+.mac-dots{display:flex;gap:6px}
+.mac-dots span{width:10px;height:10px;border-radius:50%}
+.mac-dots span:nth-child(1){background:#FF5F57}
+.mac-dots span:nth-child(2){background:#FEBC2E}
+.mac-dots span:nth-child(3){background:#28C840}
+.panel-name{font-family:var(--mono);font-size:12px;color:var(--txt3);margin:0 auto}
+.panel-tabs{display:flex;border-bottom:1px solid var(--bd);background:var(--bg2)}
+.ptab{padding:9px 16px;font-size:12px;font-weight:500;color:var(--txt3);border-bottom:2px solid transparent;cursor:default}
+.ptab.on{color:var(--txt);border-bottom-color:var(--ember)}
+.env-list{padding:4px 0}
+.env-row{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--bd);opacity:0;animation:rowIn .5s ease forwards;transition:background .15s}
+.env-row:last-child{border-bottom:none}
+.env-row:hover{background:rgba(255,255,255,.02)}
+@keyframes rowIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.env-row:nth-child(1){animation-delay:.15s}
+.env-row:nth-child(2){animation-delay:.3s}
+.env-row:nth-child(3){animation-delay:.45s}
+.env-row.new{animation-delay:2s}
+.env-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.live-dot{background:var(--green);box-shadow:0 0 8px var(--green)}
+.build-dot{background:var(--yellow);animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.env-meta{flex:1;min-width:0}
+.env-branch{font-family:var(--mono);font-size:12px;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.etag{display:inline-block;margin-left:7px;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
+.etag-prod{background:rgba(255,87,34,.12);color:var(--ember)}
+.etag-pr{background:rgba(139,92,246,.12);color:#A78BFA}
+.env-url{font-family:var(--mono);font-size:11px;color:var(--txt3)}
+.env-badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px;flex-shrink:0;white-space:nowrap}
+.badge-live{background:rgba(34,197,94,.08);color:var(--green);border:1px solid rgba(34,197,94,.18)}
+.badge-build{background:rgba(234,179,8,.08);color:var(--yellow);border:1px solid rgba(234,179,8,.18)}
+.panel-footer{padding:12px 18px;border-top:1px solid var(--bd);background:var(--bg3);display:flex;align-items:center;gap:8px}
+.pf-text{font-family:var(--mono);font-size:11px;color:var(--txt3)}
+.pf-hint{margin-left:auto;font-size:11px;color:rgba(255,87,34,.5);font-weight:500}
+
+/* ─ VIDEO ─────────────────────── */
+#video{padding:0 48px 120px;max-width:1200px;margin:0 auto}
+.video-label{text-align:center;font-size:13px;color:var(--txt2);font-weight:500;margin-bottom:20px;letter-spacing:-.1px}
+.video-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--bd2);aspect-ratio:16/9;cursor:pointer;background:var(--bg3)}
+.video-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px}
+.video-terminal{position:absolute;inset:0;padding:32px 40px;opacity:.25;pointer-events:none;overflow:hidden}
+.vtline{font-family:var(--mono);font-size:12px;line-height:2;white-space:nowrap;overflow:hidden}
+.vt-prompt{color:var(--ember)}
+.vt-cmd{color:var(--txt2)}
+.vt-ok{color:var(--green)}
+.vt-url{color:var(--azure)}
+.vt-muted{color:var(--txt3)}
+.play-btn{position:relative;z-index:2;width:72px;height:72px;background:rgba(255,87,34,.12);border:2px solid rgba(255,87,34,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.video-wrap:hover .play-btn{background:var(--ember);border-color:var(--ember);transform:scale(1.08);box-shadow:0 0 40px rgba(255,87,34,.45)}
+.play-btn svg{margin-left:4px}
+.video-cap{position:relative;z-index:2;font-size:14px;font-weight:500;color:var(--txt2)}
+.video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,12,.3) 0%,rgba(7,8,12,.1) 50%,rgba(7,8,12,.5) 100%)}
+
+/* ─ LOGOS ─────────────────────── */
+#logos{padding:52px 48px;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:var(--bg2)}
+.logos-row{display:flex;align-items:center;justify-content:center;gap:52px;flex-wrap:wrap}
+.logos-lbl{text-align:center;font-size:11px;font-weight:600;color:var(--txt3);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:28px}
+.logo-chip{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:700;color:var(--txt3);letter-spacing:-.2px;transition:color .2s}
+.logo-chip:hover{color:var(--txt2)}
+.logo-icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;font-family:var(--mono)}
+.li-gh{background:#24292E;color:#fff}
+.li-gl{background:#FC6D26;color:#fff}
+.li-az{background:#0078D4;color:#fff}
+.li-dk{background:#2496ED;color:#fff}
+.li-nd{background:#339933;color:#fff}
+.li-pg{background:#336791;color:#fff}
+.li-nx{background:#000;color:#fff}
+.li-py{background:#3776AB;color:#FFD43B}
+
+/* ─ FEATURES ─────────────────────── */
+#features{padding:120px 48px;max-width:1200px;margin:0 auto}
+.feat-intro{text-align:center;margin-bottom:60px}
+.feat-intro .sec-sub{margin:0 auto;text-align:center}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat-card{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:32px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.feat-card:hover{border-color:var(--bd2);transform:translateY(-2px)}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
+.feat-ico{width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:22px}
+.ico-ember{background:var(--eglow);border:1px solid rgba(255,87,34,.2)}
+.ico-purple{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2)}
+.ico-azure{background:var(--aglow);border:1px solid rgba(59,130,246,.2)}
+.feat-title{font-size:19px;font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
+.feat-desc{font-size:14px;color:var(--txt2);line-height:1.72}
+
+/* ─ PR SHOWCASE ─────────────────────── */
+#pr-section{padding:80px 0 120px}
+.pr-inner{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.pr-panel{background:var(--bg2);border:1px solid var(--bd2);border-radius:16px;overflow:hidden}
+.pr-panel-hdr{padding:14px 20px;border-bottom:1px solid var(--bd);background:var(--bg3);display:flex;align-items:center;justify-content:space-between}
+.pr-panel-lbl{font-family:var(--mono);font-size:12px;color:var(--txt3)}
+.pr-count-badge{font-size:11px;padding:2px 9px;background:rgba(255,87,34,.1);border-radius:4px;color:var(--ember);font-weight:700}
+.pr-item{display:flex;align-items:center;gap:14px;padding:15px 20px;border-bottom:1px solid var(--bd);opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s,background .15s}
+.pr-item:last-child{border-bottom:none}
+.pr-item.vis{opacity:1;transform:translateY(0)}
+.pr-item:hover{background:rgba(255,255,255,.015)}
+.pr-no{font-family:var(--mono);font-size:11px;color:var(--txt3);min-width:38px}
+.pr-body{flex:1;min-width:0}
+.pr-name{font-size:13px;font-weight:500;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.pr-url{font-family:var(--mono);font-size:11px;color:var(--azure);opacity:.75}
+.pr-lbadge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px;flex-shrink:0}
+.plb-live{background:rgba(34,197,94,.08);color:var(--green);border:1px solid rgba(34,197,94,.15)}
+.plb-build{background:rgba(234,179,8,.08);color:var(--yellow);border:1px solid rgba(234,179,8,.15)}
+.pr-copy .sec-sub{margin-bottom:32px}
+.pr-stat-row{display:flex;gap:36px;margin-top:36px}
+.pr-stat-num{font-size:36px;font-weight:800;letter-spacing:-1.5px;color:var(--txt);line-height:1}
+.pr-stat-lbl{font-size:12px;color:var(--txt3);margin-top:4px;font-weight:500}
+
+/* ─ AZURE ─────────────────────── */
+#azure{padding:80px 48px 120px;max-width:1200px;margin:0 auto}
+.az-top{text-align:center;margin-bottom:56px}
+.az-top .sec-sub{margin:0 auto;text-align:center}
+.az-card{background:var(--bg2);border:1px solid var(--bd2);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr auto 1fr}
+.az-col{padding:52px}
+.az-col-left{border-right:1px solid var(--bd)}
+.az-mid{display:flex;align-items:center;justify-content:center;padding:0 24px;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg3) 100%)}
+.az-arrow{width:36px;height:36px;background:var(--bg3);border:1px solid var(--bd2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--txt3);font-size:14px}
+.az-lbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+.az-lbl-ember{color:var(--ember)}
+.az-lbl-azure{color:var(--azure)}
+.az-col-title{font-size:24px;font-weight:800;letter-spacing:-.8px;margin-bottom:10px}
+.az-col-desc{font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:28px}
+.svc-list{display:flex;flex-direction:column;gap:8px}
+.svc-item{display:flex;align-items:center;gap:10px;font-size:13px;padding:11px 14px;background:rgba(255,255,255,.02);border:1px solid var(--bd);border-radius:8px;transition:border-color .2s}
+.svc-item:hover{border-color:var(--bd2)}
+.svc-icon{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.svc-icon-ember{background:var(--ember)}
+.svc-icon-azure{background:var(--azure)}
+.svc-name{font-weight:600;color:var(--txt);font-size:13px}
+.svc-desc{font-size:12px;color:var(--txt3);margin-left:auto}
+
+/* ─ HOW ─────────────────────── */
+#how{padding:80px 48px 120px;max-width:1200px;margin:0 auto}
+.how-intro{text-align:center;margin-bottom:72px}
+.how-intro .sec-sub{margin:0 auto;text-align:center}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.how-line{position:absolute;top:27px;left:calc(16.67% + 28px);right:calc(16.67% + 28px);height:1px;background:linear-gradient(90deg,var(--ember),rgba(255,255,255,.08),var(--azure))}
+.how-step{padding:0 36px}
+.how-num{width:56px;height:56px;background:var(--bg2);border:1px solid var(--bd2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ember);margin-bottom:24px;position:relative;z-index:1}
+.how-step:last-child .how-num{color:var(--azure);border-color:rgba(59,130,246,.2);background:var(--aglow)}
+.how-step-title{font-size:18px;font-weight:700;letter-spacing:-.5px;color:var(--txt);margin-bottom:10px}
+.how-step-desc{font-size:14px;color:var(--txt2);line-height:1.72}
+.how-step-code{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--txt3);background:var(--bg3);border:1px solid var(--bd);border-radius:6px;padding:4px 10px}
+
+/* ─ PRICING ─────────────────────── */
+#pricing{padding:80px 48px 120px;max-width:1200px;margin:0 auto}
+.price-intro{text-align:center;margin-bottom:56px}
+.price-intro .sec-sub{margin:0 auto;text-align:center}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.price-card{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:32px;display:flex;flex-direction:column;transition:border-color .2s}
+.price-card:hover{border-color:var(--bd2)}
+.price-card.featured{border-color:var(--ember);background:linear-gradient(180deg,rgba(255,87,34,.04) 0%,var(--bg2) 80%);position:relative}
+.price-pop{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--ember);color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:.5px;white-space:nowrap}
+.price-tier-lbl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt3);margin-bottom:16px}
+.price-card.featured .price-tier-lbl{color:var(--ember)}
+.price-amount{font-size:46px;font-weight:800;letter-spacing:-2px;color:var(--txt);line-height:1;margin-bottom:4px}
+.price-amount sup{font-size:22px;font-weight:600;letter-spacing:0;vertical-align:super}
+.price-amount sub{font-size:16px;font-weight:400;color:var(--txt2);letter-spacing:0}
+.price-tagline{font-size:13px;color:var(--txt2);margin-bottom:26px;line-height:1.6}
+.price-divider{height:1px;background:var(--bd);margin-bottom:22px}
+.price-features{flex:1;list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.pf-item{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--txt2)}
+.pf-check{flex-shrink:0;width:15px;height:15px;margin-top:1px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--green);font-size:9px;font-weight:700}
+
+/* ─ CTA ─────────────────────── */
+#cta{padding:80px 48px 140px;max-width:1200px;margin:0 auto}
+.cta-box{background:var(--bg2);border:1px solid var(--bd2);border-radius:20px;padding:80px 60px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(255,87,34,.07) 0%,transparent 70%);pointer-events:none}
+.cta-title{font-size:clamp(34px,4vw,56px);font-weight:800;letter-spacing:-2.5px;line-height:1.05;margin-bottom:16px}
+.cta-sub{font-size:17px;color:var(--txt2);max-width:460px;margin:0 auto 36px;line-height:1.7}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.cta-note{margin-top:16px;font-size:12px;color:var(--txt3)}
+
+/* ─ FOOTER ─────────────────────── */
+footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
+.foot-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-logo{font-size:18px;font-weight:800;color:var(--txt2);letter-spacing:-.8px;text-decoration:none;display:flex;align-items:center;gap:6px}
+.foot-logo-dot{width:7px;height:7px;border-radius:50%;background:var(--ember)}
+.foot-links{display:flex;gap:32px;list-style:none}
+.foot-links a{font-size:13px;color:var(--txt3);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--txt2)}
+.foot-copy{font-size:12px;color:var(--txt3)}
+
+/* ─ REVEAL ─────────────────────── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+
+/* ─ RESPONSIVE ─────────────────────── */
+@media(max-width:1024px){
+  #hero{flex-direction:column;padding:100px 24px 60px;gap:48px;max-width:100%}
+  .hero-right{flex:none;width:100%}
+  .feat-grid,.how-steps,.price-grid{grid-template-columns:1fr}
+  .how-line{display:none}
+  .how-step{padding:0 0 40px}
+  .az-card{grid-template-columns:1fr}
+  .az-mid{display:none}
+  .az-col-left{border-right:none;border-bottom:1px solid var(--bd)}
+  .pr-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .wrap,.pr-inner,#hero,#video,#features,#pr-section .pr-inner,#azure,#how,#pricing,#cta{padding-left:24px;padding-right:24px}
+  .cta-box{padding:48px 28px}
+  footer,#nav{padding-left:24px;padding-right:24px}
+  .foot-inner{flex-direction:column;align-items:flex-start;gap:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero-glow"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo"><span class="logo-dot"></span> embr</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#">Docs</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#" class="btn btn-ghost">Sign in</a>
+    <a href="#" class="btn btn-primary">Get started free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><span class="badge-dot"></span> Now in beta · Free during early access</div>
+    <h1>Every PR.<br><span class="grad">A live environment.</span></h1>
+    <p class="hero-sub">embr gives you a production-grade environment for your main branch and a fresh, isolated preview on every pull request — automatically.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary btn-lg">Get started free →</a>
+      <a href="#video" class="btn btn-ghost btn-lg">Watch the demo</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-item"><span class="proof-dot"></span> No credit card</div>
+      <div class="proof-item"><span class="proof-dot"></span> Instant setup</div>
+      <div class="proof-item"><span class="proof-dot"></span> GitHub &amp; GitLab</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="env-panel">
+      <div class="panel-glow"></div>
+      <div class="panel-header">
+        <div class="mac-dots"><span></span><span></span><span></span></div>
+        <span class="panel-name">myapp · environments</span>
+      </div>
+      <div class="panel-tabs">
+        <div class="ptab on">Environments</div>
+        <div class="ptab">Logs</div>
+        <div class="ptab">Settings</div>
+      </div>
+      <div class="env-list">
+        <div class="env-row">
+          <span class="env-dot live-dot"></span>
+          <div class="env-meta">
+            <div class="env-branch">main <span class="etag etag-prod">production</span></div>
+            <div class="env-url">myapp.embr.dev</div>
+          </div>
+          <span class="env-badge badge-live">Live</span>
+        </div>
+        <div class="env-row">
+          <span class="env-dot live-dot"></span>
+          <div class="env-meta">
+            <div class="env-branch">feat/dark-mode <span class="etag etag-pr">PR #47</span></div>
+            <div class="env-url">pr-47.myapp.embr.dev</div>
+          </div>
+          <span class="env-badge badge-live">Live</span>
+        </div>
+        <div class="env-row">
+          <span class="env-dot live-dot"></span>
+          <div class="env-meta">
+            <div class="env-branch">fix/auth-edge <span class="etag etag-pr">PR #44</span></div>
+            <div class="env-url">pr-44.myapp.embr.dev</div>
+          </div>
+          <span class="env-badge badge-live">Live</span>
+        </div>
+        <div class="env-row new" id="newPR">
+          <span class="env-dot build-dot" id="newDot"></span>
+          <div class="env-meta">
+            <div class="env-branch">feat/notifications <span class="etag etag-pr">PR #48</span></div>
+            <div class="env-url" id="newUrl">Building environment…</div>
+          </div>
+          <span class="env-badge badge-build" id="newBadge">Building</span>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <span class="pf-text">4 environments running</span>
+        <span class="pf-hint">Tear down on merge →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="reveal">
+  <div style="padding:0 48px 120px;max-width:1200px;margin:0 auto">
+    <p class="video-label">See embr spin up a preview environment in real time</p>
+    <div class="video-wrap">
+      <div class="video-overlay"></div>
+      <div class="video-terminal">
+        <div class="vtline"><span class="vt-prompt">$</span> <span class="vt-cmd">git push origin feat/dark-mode</span></div>
+        <div class="vtline"><span class="vt-muted">Enumerating objects: 14, done.</span></div>
+        <div class="vtline"><span class="vt-muted">remote: Resolving deltas: 100%</span></div>
+        <div class="vtline">&nbsp;</div>
+        <div class="vtline"><span class="vt-ok">✓</span> <span class="vt-cmd">embr detected push to feat/dark-mode</span></div>
+        <div class="vtline"><span class="vt-muted">  → Provisioning environment [pr-47]</span></div>
+        <div class="vtline"><span class="vt-muted">  → Running: npm ci (cached)</span></div>
+        <div class="vtline"><span class="vt-muted">  → Running: npm run build</span></div>
+        <div class="vtline"><span class="vt-ok">✓</span> <span class="vt-cmd">Build complete (18s)</span></div>
+        <div class="vtline"><span class="vt-ok">✓</span> <span class="vt-cmd">Environment live:</span></div>
+        <div class="vtline">&nbsp;&nbsp;<span class="vt-url">https://pr-47.myapp.embr.dev</span></div>
+      </div>
+      <div class="video-inner">
+        <div class="play-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="video-cap">Watch the 2-minute demo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section id="logos" class="reveal">
+  <p class="logos-lbl">Works with your stack</p>
+  <div class="logos-row">
+    <div class="logo-chip"><span class="logo-icon li-gh">GH</span> GitHub</div>
+    <div class="logo-chip"><span class="logo-icon li-gl">GL</span> GitLab</div>
+    <div class="logo-chip"><span class="logo-icon li-az">Az</span> Azure</div>
+    <div class="logo-chip"><span class="logo-icon li-dk">D</span> Docker</div>
+    <div class="logo-chip"><span class="logo-icon li-nd">N</span> Node.js</div>
+    <div class="logo-chip"><span class="logo-icon li-pg">PG</span> PostgreSQL</div>
+    <div class="logo-chip"><span class="logo-icon li-nx" style="font-family:serif">N.</span> Next.js</div>
+    <div class="logo-chip"><span class="logo-icon li-py">Py</span> Python</div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="feat-intro reveal">
+    <p class="eyebrow">What you get</p>
+    <h2 class="sec-title">Real environments.<br>Not just previews.</h2>
+    <p class="sec-sub">embr doesn't just render a static screenshot — it spins up a fully isolated, production-equivalent stack for every branch you push.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card reveal reveal-d1">
+      <div class="feat-ico ico-ember">🔥</div>
+      <div class="feat-title">Production environments</div>
+      <p class="feat-desc">Your main branch gets a persistent, production-grade environment from day one. Real infra, real performance, no config files to write.</p>
+    </div>
+    <div class="feat-card reveal reveal-d2">
+      <div class="feat-ico ico-purple">⚡</div>
+      <div class="feat-title">PR preview environments</div>
+      <p class="feat-desc">Open a PR, get a URL. Every branch gets its own fully isolated environment that spins up in seconds and tears down on merge.</p>
+    </div>
+    <div class="feat-card reveal reveal-d3">
+      <div class="feat-ico ico-azure">☁️</div>
+      <div class="feat-title">Azure when you're ready</div>
+      <p class="feat-desc">When you outgrow embr, your services map directly to Azure equivalents. No rewrite, no painful migration — just a clean handoff.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PR SHOWCASE -->
+<section id="pr-section">
+  <div class="pr-inner">
+    <div class="pr-panel reveal">
+      <div class="pr-panel-hdr">
+        <span class="pr-panel-lbl">myapp / pull requests</span>
+        <span class="pr-count-badge">5 live</span>
+      </div>
+      <div id="prList">
+        <div class="pr-item">
+          <span class="pr-no">#51</span>
+          <div class="pr-body">
+            <div class="pr-name">feat: add dark mode toggle</div>
+            <div class="pr-url">pr-51.myapp.embr.dev</div>
+          </div>
+          <span class="pr-lbadge plb-live">Live ✓</span>
+        </div>
+        <div class="pr-item">
+          <span class="pr-no">#49</span>
+          <div class="pr-body">
+            <div class="pr-name">fix: resolve auth edge case</div>
+            <div class="pr-url">pr-49.myapp.embr.dev</div>
+          </div>
+          <span class="pr-lbadge plb-live">Live ✓</span>
+        </div>
+        <div class="pr-item">
+          <span class="pr-no">#47</span>
+          <div class="pr-body">
+            <div class="pr-name">refactor: update billing flow</div>
+            <div class="pr-url">pr-47.myapp.embr.dev</div>
+          </div>
+          <span class="pr-lbadge plb-live">Live ✓</span>
+        </div>
+        <div class="pr-item">
+          <span class="pr-no">#46</span>
+          <div class="pr-body">
+            <div class="pr-name">feat: onboarding redesign</div>
+            <div class="pr-url">pr-46.myapp.embr.dev</div>
+          </div>
+          <span class="pr-lbadge plb-live">Live ✓</span>
+        </div>
+        <div class="pr-item">
+          <span class="pr-no">#52</span>
+          <div class="pr-body">
+            <div class="pr-name">feat: notifications panel</div>
+            <div class="pr-url">Spinning up…</div>
+          </div>
+          <span class="pr-lbadge plb-build">Building</span>
+        </div>
+      </div>
+    </div>
+    <div class="pr-copy reveal reveal-d2">
+      <p class="eyebrow">PR environments</p>
+      <h2 class="sec-title">Every branch.<br>An instant URL.</h2>
+      <p class="sec-sub">Push to any branch and embr provisions a full isolated environment automatically. No pipeline YAML to write, no infra to think about. Share the link in your PR review and get feedback on real running code — not a screenshot.</p>
+      <div class="pr-stat-row">
+        <div>
+          <div class="pr-stat-num">~18s</div>
+          <div class="pr-stat-lbl">Average deploy time</div>
+        </div>
+        <div>
+          <div class="pr-stat-num">100%</div>
+          <div class="pr-stat-lbl">Isolated per branch</div>
+        </div>
+        <div>
+          <div class="pr-stat-num">0</div>
+          <div class="pr-stat-lbl">Config files to write</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AZURE -->
+<section id="azure">
+  <div class="az-top reveal">
+    <p class="eyebrow">The growth path</p>
+    <h2 class="sec-title">Start indie.<br>Scale enterprise.</h2>
+    <p class="sec-sub">embr is designed to grow with you. When your project needs real Azure infrastructure, your services map directly — no migration headaches, no vendor lock-in.</p>
+  </div>
+  <div class="az-card reveal">
+    <div class="az-col az-col-left">
+      <p class="az-lbl az-lbl-ember">On embr</p>
+      <h3 class="az-col-title">Built for indie builders</h3>
+      <p class="az-col-desc">Zero config. Instant environments. Everything a solo dev needs to ship without thinking about infrastructure.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Environments</span><span class="svc-desc">embr managed</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Object storage</span><span class="svc-desc">embr storage</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">PostgreSQL</span><span class="svc-desc">embr database</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-ember"></span><span class="svc-name">Custom domains</span><span class="svc-desc">SSL included</span></div>
+      </div>
+    </div>
+    <div class="az-mid">
+      <div class="az-arrow">→</div>
+    </div>
+    <div class="az-col">
+      <p class="az-lbl az-lbl-azure">On Azure</p>
+      <h3 class="az-col-title">Enterprise-ready infra</h3>
+      <p class="az-col-desc">When the project grows into a product, migrate each service to its Azure equivalent — one at a time, at your pace.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Container Apps</span><span class="svc-desc">Azure managed</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Blob Storage</span><span class="svc-desc">Azure Storage</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Azure Database</span><span class="svc-desc">for PostgreSQL</span></div>
+        <div class="svc-item"><span class="svc-icon svc-icon-azure"></span><span class="svc-name">Azure DNS</span><span class="svc-desc">+ Front Door</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="how-intro reveal">
+    <p class="eyebrow">Setup in minutes</p>
+    <h2 class="sec-title">Three steps to your<br>first live environment</h2>
+    <p class="sec-sub">No YAML files. No infrastructure decisions. No DevOps background required. Just connect and ship.</p>
+  </div>
+  <div class="how-steps">
+    <div class="how-line"></div>
+    <div class="how-step reveal reveal-d1">
+      <div class="how-num">01</div>
+      <div class="how-step-title">Connect your repo</div>
+      <p class="how-step-desc">Authorize embr on GitHub or GitLab. Select the repo you want to deploy. That's the whole setup.</p>
+      <span class="how-step-code">embr connect github</span>
+    </div>
+    <div class="how-step reveal reveal-d2">
+      <div class="how-num">02</div>
+      <div class="how-step-title">Push your code</div>
+      <p class="how-step-desc">Push to main to deploy production. Open a PR to get a preview. embr detects your framework and handles the rest.</p>
+      <span class="how-step-code">git push origin main</span>
+    </div>
+    <div class="how-step reveal reveal-d3">
+      <div class="how-num">03</div>
+      <div class="how-step-title">Share the link</div>
+      <p class="how-step-desc">Every environment gets a unique URL. Comment it in your PR, share it with stakeholders, or test it yourself — it's always live.</p>
+      <span class="how-step-code" style="color:var(--azure)">pr-47.myapp.embr.dev</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="price-intro reveal">
+    <p class="eyebrow">Pricing</p>
+    <h2 class="sec-title">Start free.<br>Scale as you ship.</h2>
+    <p class="sec-sub">No surprise bills. No per-seat pricing. Pay for what your project actually needs.</p>
+  </div>
+  <div class="price-grid">
+    <div class="price-card reveal reveal-d1">
+      <p class="price-tier-lbl">Spark</p>
+      <div class="price-amount"><sup></sup>Free</div>
+      <p class="price-tagline">Everything you need to start building. No credit card, no time limit.</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li class="pf-item"><span class="pf-check">✓</span> 1 production environment</li>
+        <li class="pf-item"><span class="pf-check">✓</span> Up to 3 PR preview environments</li>
+        <li class="pf-item"><span class="pf-check">✓</span> 10GB storage</li>
+        <li class="pf-item"><span class="pf-check">✓</span> PostgreSQL database</li>
+        <li class="pf-item"><span class="pf-check">✓</span> GitHub &amp; GitLab integration</li>
+        <li class="pf-item"><span class="pf-check">✓</span> embr.dev subdomain</li>
+      </ul>
+      <a href="#" class="btn btn-ghost" style="width:100%;justify-content:center">Get started free</a>
+    </div>
+    <div class="price-card featured reveal reveal-d2">
+      <span class="price-pop">Most popular</span>
+      <p class="price-tier-lbl">Blaze</p>
+      <div class="price-amount"><sup>$</sup>19<sub>/mo</sub></div>
+      <p class="price-tagline">For indie devs who push code every day and need unlimited previews.</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li class="pf-item"><span class="pf-check">✓</span> 3 production environments</li>
+        <li class="pf-item"><span class="pf-check">✓</span> Unlimited PR preview environments</li>
+        <li class="pf-item"><span class="pf-check">✓</span> 100GB storage</li>
+        <li class="pf-item"><span class="pf-check">✓</span> Custom domains + SSL</li>
+        <li class="pf-item"><span class="pf-check">✓</span> Environment variables &amp; secrets</li>
+        <li class="pf-item"><span class="pf-check">✓</span> Priority support</li>
+      </ul>
+      <a href="#" class="btn btn-primary" style="width:100%;justify-content:center">Start with Blaze →</a>
+    </div>
+    <div class="price-card reveal reveal-d3">
+      <p class="price-tier-lbl">Forge</p>
+      <div class="price-amount" style="font-size:32px;letter-spacing:-1px;padding-top:4px">Azure pricing</div>
+      <p class="price-tagline">When you're ready to move to real Azure infrastructure. We migrate you there.</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li class="pf-item"><span class="pf-check">✓</span> Everything in Blaze</li>
+        <li class="pf-item"><span class="pf-check">✓</span> Azure Container Apps migration</li>
+        <li class="pf-item"><span class="pf-check">✓</span> Azure Blob + Database handoff</li>
+        <li class="pf-item"><span class="pf-check">✓</span> Guided migration support</li>
+        <li class="pf-item"><span class="pf-check">✓</span> You pay Azure directly</li>
+        <li class="pf-item"><span class="pf-check">✓</span> No embr lock-in</li>
+      </ul>
+      <a href="#" class="btn btn-ghost" style="width:100%;justify-content:center">Talk to us</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-box reveal">
+    <div class="cta-glow"></div>
+    <h2 class="cta-title">Start building.<br>Ship your first PR tonight.</h2>
+    <p class="cta-sub">Connect your repo, push a branch, and watch a live environment appear in under 30 seconds. Free, forever.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-primary btn-xl">Get started free →</a>
+      <a href="#" class="btn btn-ghost btn-xl">Read the docs</a>
+    </div>
+    <p class="cta-note">No credit card · No config files · GitHub &amp; GitLab</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <a href="#" class="foot-logo"><span class="foot-logo-dot"></span> embr</a>
+    <ul class="foot-links">
+      <li><a href="#">Docs</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">Twitter / X</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+    <p class="foot-copy">© 2026 embr · Built for builders</p>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// IntersectionObserver for reveal animations
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObs.observe(el));
+
+// PR list stagger animation
+const prItems = document.querySelectorAll('.pr-item');
+const prObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      prItems.forEach((item, i) => { setTimeout(() => item.classList.add('vis'), i * 90); });
+      prObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+if (prItems.length) prObs.observe(document.getElementById('prList'));
+
+// Hero env panel: new PR building → live transition loop
+function runBuildAnimation() {
+  const pr = document.getElementById('newPR');
+  const dot = document.getElementById('newDot');
+  const url = document.getElementById('newUrl');
+  const badge = document.getElementById('newBadge');
+
+  // Start in building state (already set in HTML)
+  // After 3s → go live
+  setTimeout(() => {
+    dot.className = 'env-dot live-dot';
+    url.textContent = 'pr-48.myapp.embr.dev';
+    badge.textContent = 'Live';
+    badge.className = 'env-badge badge-live';
+
+    // After 5s more → reset to building, loop
+    setTimeout(() => {
+      dot.className = 'env-dot build-dot';
+      url.textContent = 'Building environment…';
+      badge.textContent = 'Building';
+      badge.className = 'env-badge badge-build';
+      setTimeout(runBuildAnimation, 3000);
+    }, 5000);
+  }, 3000);
+}
+setTimeout(runBuildAnimation, 3200);
+</script>
+</body>
+</html>
