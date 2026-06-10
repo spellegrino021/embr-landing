@@ -51,6 +51,31 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16p
 #nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
 #nav.scrolled{background:rgba(7,8,12,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
 .nav-logo{font-size:20px;font-weight:800;color:var(--txt);text-decoration:none;letter-spacing:-1px;display:flex;align-items:center;gap:8px}
+.logo-flame{width:20px;height:24px;display:inline-block;filter:drop-shadow(0 0 6px rgba(255,87,34,.55)) drop-shadow(0 0 14px rgba(255,87,34,.25));transform-origin:center bottom;animation:flameSway 2.4s ease-in-out infinite}
+.logo-flame .flame-outer{fill:#FF5722;animation:flameFlicker 1.6s ease-in-out infinite}
+.logo-flame .flame-inner{fill:#FFB347;animation:flameInner 1.1s ease-in-out infinite}
+.logo-flame .flame-core{fill:#FFEAA7;animation:flameCore .8s ease-in-out infinite}
+@keyframes flameSway{
+  0%,100%{transform:rotate(-2deg) scale(1)}
+  50%{transform:rotate(2deg) scale(1.04)}
+}
+@keyframes flameFlicker{
+  0%,100%{transform:scaleY(1) scaleX(1);opacity:1}
+  30%{transform:scaleY(1.08) scaleX(.96);opacity:.92}
+  60%{transform:scaleY(.94) scaleX(1.04);opacity:1}
+}
+@keyframes flameInner{
+  0%,100%{transform:scaleY(1) translateY(0);opacity:.95}
+  50%{transform:scaleY(1.12) translateY(-.4px);opacity:1}
+}
+@keyframes flameCore{
+  0%,100%{opacity:.85}
+  50%{opacity:1}
+}
+.foot-logo-flame{width:16px;height:19px;display:inline-block;filter:drop-shadow(0 0 4px rgba(255,87,34,.45));animation:flameSway 2.4s ease-in-out infinite}
+.foot-logo-flame .flame-outer{fill:#FF5722;animation:flameFlicker 1.6s ease-in-out infinite}
+.foot-logo-flame .flame-inner{fill:#FFB347;animation:flameInner 1.1s ease-in-out infinite}
+.foot-logo-flame .flame-core{fill:#FFEAA7;animation:flameCore .8s ease-in-out infinite}
 .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--ember);box-shadow:0 0 14px var(--ember),0 0 28px rgba(255,87,34,.3)}
 .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
 .nav-links a{color:var(--txt2);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
@@ -413,7 +438,7 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo"><span class="logo-dot"></span> embr</a>
+  <a href="#" class="nav-logo"><svg class="logo-flame" viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="flame-outer" d="M10 1.2c.6 2.6.2 4.4-1.2 6.2-1.6 2-3.6 3.4-4.6 6C2.8 17 5.4 22 10 22.8c4.6-.8 7.2-5.8 5.8-9.4-1-2.6-3-4-4.6-6-1.4-1.8-1.8-3.6-1.2-6.2z"/><path class="flame-inner" d="M10 7.8c.4 1.6.1 2.8-.9 4-1.1 1.3-2.4 2.2-3 3.9-.8 2.3.9 5.3 3.9 5.8 3-.5 4.7-3.5 3.9-5.8-.6-1.7-1.9-2.6-3-3.9-1-1.2-1.3-2.4-.9-4z"/><path class="flame-core" d="M10 13.2c.2.9.1 1.5-.5 2.2-.6.7-1.3 1.2-1.6 2.1-.4 1.3.5 2.9 2.1 3.2 1.6-.3 2.5-1.9 2.1-3.2-.3-.9-1-1.4-1.6-2.1-.6-.7-.7-1.3-.5-2.2z"/></svg> embr</a>
   <ul class="nav-links">
     <li><a href="#pillars">Why embr</a></li>
     <li><a href="#fgrid">Features</a></li>
@@ -878,7 +903,7 @@ footer{border-top:1px solid var(--bd);padding:48px;background:var(--bg2)}
 <!-- FOOTER -->
 <footer>
   <div class="foot-inner">
-    <a href="#" class="foot-logo"><span class="foot-logo-dot"></span> embr</a>
+    <a href="#" class="foot-logo"><svg class="foot-logo-flame" viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="flame-outer" d="M10 1.2c.6 2.6.2 4.4-1.2 6.2-1.6 2-3.6 3.4-4.6 6C2.8 17 5.4 22 10 22.8c4.6-.8 7.2-5.8 5.8-9.4-1-2.6-3-4-4.6-6-1.4-1.8-1.8-3.6-1.2-6.2z"/><path class="flame-inner" d="M10 7.8c.4 1.6.1 2.8-.9 4-1.1 1.3-2.4 2.2-3 3.9-.8 2.3.9 5.3 3.9 5.8 3-.5 4.7-3.5 3.9-5.8-.6-1.7-1.9-2.6-3-3.9-1-1.2-1.3-2.4-.9-4z"/><path class="flame-core" d="M10 13.2c.2.9.1 1.5-.5 2.2-.6.7-1.3 1.2-1.6 2.1-.4 1.3.5 2.9 2.1 3.2 1.6-.3 2.5-1.9 2.1-3.2-.3-.9-1-1.4-1.6-2.1-.6-.7-.7-1.3-.5-2.2z"/></svg> embr</a>
     <ul class="foot-links">
       <li><a href="#">Docs</a></li>
       <li><a href="#tpls">Templates</a></li>
